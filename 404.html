@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+
+    <!--
+      viewport-fit=cover is what makes env(safe-area-inset-*) resolve to real
+      numbers on notched iPhones — without it every inset reads 0 and the bottom
+      tab bar sits under the home indicator.
+      interactive-widget stops the iOS keyboard shoving the whole layout upward
+      when the coupon or search field is focused.
+    -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+
+    <title>DopaCart — Feel Rich, Stay Rich</title>
+    <meta
+      name="description"
+      content="Retail therapy without spending. Get the thrill of shopping and keep every rupee."
+    />
+
+    <!-- Tints the iOS/Android browser chrome to match the paper background. -->
+    <meta name="theme-color" content="#FAF8F4" />
+
+    <!-- Makes Add to Home Screen behave like an app, not a bookmark. -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="DopaCart" />
+
+    <!-- Link preview, for when this gets pasted into a chat. -->
+    <meta property="og:title" content="DopaCart" />
+    <meta
+      property="og:description"
+      content="Retail therapy without spending. Get the thrill, keep your money."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+
+    <style id="expo-reset">
+      :root {
+        color-scheme: light only;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      /*
+        iOS Safari's toolbars shrink the visible area after first paint, but
+        100vh/100% keep reporting the ORIGINAL height — so the bottom tab bar
+        ends up hidden behind the browser chrome. dvh tracks the live viewport.
+        The 100% above remains the fallback.
+      */
+      @supports (height: 100dvh) {
+        html,
+        body {
+          height: 100dvh;
+        }
+      }
+
+      /* Disables body scrolling, since the app scrolls inside <ScrollView>. */
+      body {
+        overflow: hidden;
+        margin: 0;
+        background-color: #faf8f4;
+        /* Stops the rubber-band bounce that flashes white behind the app. */
+        overscroll-behavior: none;
+        /* Stops iOS inflating text in landscape. */
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        /* Removes the grey flash on tap so presses feel native. */
+        -webkit-tap-highlight-color: transparent;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /* Long-press shouldn't offer to copy text or save an image. */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      /* …except where selecting text is genuinely useful. */
+      input,
+      textarea {
+        -webkit-user-select: text;
+        user-select: text;
+        -webkit-touch-callout: default;
+      }
+
+      /* Momentum scrolling inside ScrollViews on older iOS. */
+      * {
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Phone layout: never allow a sideways scroll. */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      /* Makes the root element full-height. */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+        background-color: #faf8f4;
+      }
+      @supports (height: 100dvh) {
+        #root {
+          height: 100dvh;
+        }
+      }
+    </style>
+  <link rel="icon" href="/dopacart-demo/favicon.ico"/></head>
+
+  <body>
+    <noscript>
+      DopaCart needs JavaScript to run. Please enable it and reload.
+    </noscript>
+    <div id="root"></div>
+  <script src="/dopacart-demo/_expo/static/js/web/entry-1d7e9f593954fa66973a22acf58ca21a.js" defer></script>
+</body>
+</html>
